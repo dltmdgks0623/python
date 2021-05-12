@@ -51,7 +51,8 @@ while True:
                     upbit.buy_market_order("KRW-MARO", krw*0.9995)
         else:
             btc = get_balance("KRW-MARO")
-            if btc*float(get_current_price("KRW-MARO")) > 5000:
+            btc_current = btc*float(get_current_price("KRW-MARO"))
+            if btc_current > 5000:
                 upbit.sell_market_order("KRW-MARO", btc*0.9995)
         time.sleep(1)
     except Exception as e:
