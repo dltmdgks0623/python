@@ -38,7 +38,7 @@ print("autotrade start")
 # 자동매매 시작
 while True:
     try:
-        now = datetime.datetime.now()
+        now = datetime.datetime.today()
         start_time = get_start_time("KRW-MARO")
         end_time = start_time + datetime.timedelta(minutes=30)
 
@@ -50,11 +50,13 @@ while True:
                 if krw > 5000:
                     upbit.buy_market_order("KRW-MARO", krw*0.9995)
         else:
-            btc = get_balance("KRW-MARO")
+            btc = get_balance("MARO")
             btc_current = btc*float(get_current_price("KRW-MARO"))
             if btc_current > 5000:
-                upbit.sell_market_order("KRW-MARO", btc*0.9995)
+                upbit.sell_market_order("KRW-MARO", btc)
+            print("date err")
         time.sleep(1)
     except Exception as e:
         print(e)
         time.sleep(1)
+        
